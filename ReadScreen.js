@@ -60,6 +60,20 @@ export default class ReadScreen extends React.Component{
           })
           this.setState({chosenTitle: chosenTitle})
     }
+    
+        getTitles = () =>{
+        db.ref("Story1/Title").on("value", data => {
+            title1 = data.val();
+        })
+
+        db.ref("Story2/Title").on("value", data => {
+            title2 = data.val();
+        })
+
+        db.ref("Story3/Title").on("value", data => {
+            title3 = data.val();
+        })
+    }
 
     constructor(){
         super();
@@ -70,6 +84,9 @@ export default class ReadScreen extends React.Component{
         }
     }
     render(){
+        
+        this.getTitles();
+        
         return(
             <View style = {styles.container}>
                 <Text style = {styles.text}>
