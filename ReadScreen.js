@@ -9,6 +9,22 @@ var chosenAuthor, chosenStory, chosenTitle;
 var title1, title2, title3;
 
 export default class ReadScreen extends React.Component{
+    
+    componentDidMount(){
+        
+        db.ref("Story1/Title").on("value", data => {
+            title1 = data.val();
+        })
+
+        db.ref("Story2/Title").on("value", data => {
+            title2 = data.val();
+        })
+
+        db.ref("Story3/Title").on("value", data => {
+            title3 = data.val();
+        })
+   
+    }
 
     getInfo1 = () => {
         db.ref("Story1/Author").on("value", data => {
@@ -61,19 +77,7 @@ export default class ReadScreen extends React.Component{
           this.setState({chosenTitle: chosenTitle})
     }
     
-        getTitles = () =>{
-        db.ref("Story1/Title").on("value", data => {
-            title1 = data.val();
-        })
 
-        db.ref("Story2/Title").on("value", data => {
-            title2 = data.val();
-        })
-
-        db.ref("Story3/Title").on("value", data => {
-            title3 = data.val();
-        })
-    }
 
     constructor(){
         super();
@@ -84,8 +88,7 @@ export default class ReadScreen extends React.Component{
         }
     }
     render(){
-        
-        this.getTitles();
+     
         
         return(
             <View style = {styles.container}>
