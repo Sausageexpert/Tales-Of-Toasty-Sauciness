@@ -10,8 +10,7 @@ var title1, title2, title3;
 
 export default class ReadScreen extends React.Component{
     
-    componentDidMount(){
-        
+    getTitles = () =>{
         db.ref("Story1/Title").on("value", data => {
             title1 = data.val();
         })
@@ -23,7 +22,16 @@ export default class ReadScreen extends React.Component{
         db.ref("Story3/Title").on("value", data => {
             title3 = data.val();
         })
-   
+
+        this.setState({
+            title1: title1,
+            title2: title2,
+            title3: title3
+        })
+    }
+
+    componentDidMount =() =>{
+          this.getTitles();
     }
 
     getInfo1 = () => {
