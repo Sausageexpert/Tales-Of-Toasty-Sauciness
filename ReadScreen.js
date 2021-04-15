@@ -92,7 +92,11 @@ export default class ReadScreen extends React.Component{
         this.state = {  
             chosenAuthor: '',
             chosenStory: '',
-            chosenTitle: ''
+            chosenTitle: '',
+            
+            title1: '',
+            title2: '',
+            title3: ''
         }
     }
     render(){
@@ -108,14 +112,14 @@ export default class ReadScreen extends React.Component{
                 onPress = {() =>{
                     this.getInfo1();
                 }}>
-                    <Text style = {styles.text2}>{title1}</Text>
+                    <Text style = {styles.text2}>{this.state.title1}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style = {styles.button}
                 onPress = {() =>{
                     this.getInfo2();
                 }}>
-                    <Text style = {styles.text2}>{title2}</Text>
+                    <Text style = {styles.text2}>{this.state.title2}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style = {styles.button}
@@ -123,7 +127,7 @@ export default class ReadScreen extends React.Component{
                     this.getInfo3();
                 }}>
 
-                    <Text style = {styles.text2}>{title3}</Text>
+                    <Text style = {styles.text2}>{this.state.title3}</Text>
                 </TouchableOpacity>
  
     
